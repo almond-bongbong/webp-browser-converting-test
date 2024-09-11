@@ -59,7 +59,13 @@ function App() {
       quality: 80,
     });
 
-    console.log("WebP file size:", formatFileSize(webp.byteLength));
+    const newFileName = file.name.replace(/\.\w+$/, ".webp");
+
+    const webpFile = new File([webp], newFileName, {
+      type: "image/webp",
+    });
+
+    console.log("WebP file size:", formatFileSize(webpFile.size));
   };
 
   return (
